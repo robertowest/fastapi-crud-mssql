@@ -1,0 +1,5 @@
+fastapi==0.101.1
+uvicorn==0.23.2
+
+# SQLServer
+pyodbc==4.0.39
