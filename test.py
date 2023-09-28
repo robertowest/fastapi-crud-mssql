@@ -1,6 +1,5 @@
 from db.database import MSSQL
 from db.services.usuario import UsuarioSrv
-from db.models import UsuarioModel
 
 
 srv = UsuarioSrv()

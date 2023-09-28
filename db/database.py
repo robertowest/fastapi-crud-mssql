@@ -24,9 +24,8 @@ class MSSQL():
         self.host = settings.DB_HOST
         self.port = settings.DB_PORT
         self.db = settings.DB_NAME
-        print('Connected to DB:', f'{self.host}:{self.port}/{self.db}')
-        # self._connection = pyodbc.connect(settings.DATABASE_URL)
-        self._connection = pyodbc.connect("Driver={SQL Server};Server=OFICINAROBERTOP\SQLEXPRESS;Database=dbPruebas;Trusted_Connection=yes;")
+        self._connection = pyodbc.connect(settings.DATABASE_URL)
+        # print('Connected to DB:', settings.DATABASE_URL)
         pyodbc.pooling = False
 
     def __repr__(self):
@@ -37,7 +36,6 @@ class MSSQL():
 
     def __del__(self):
         self._connection.close()
-        print("Connection closed.")
 
     @contextmanager
     def cursor(self, commit: bool = False):
@@ -70,7 +68,7 @@ class MSSQL():
         try: 
             result = []
             columns = [column[0] for column in cursor.description]
-            for row in  cursor.fetchall():
+            for row in cursor.fetchall():
                 result.append(dict(zip(columns,row)))
 
             # comprueba si hay registros

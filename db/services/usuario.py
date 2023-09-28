@@ -18,7 +18,7 @@ class UsuarioSrv:
     table = "dbo.usuario"       # nombre de la tabla
     view = "dbo.usuario"        # en caso de que use una vista
 
-    def create(self, data):
+    def create(self, data):        
         sql = f'INSERT INTO {self.table} ([documento], [nombres], [telefono], [correo]) OUTPUT INSERTED.id VALUES (?,?,?,?);'
         
         try:
@@ -84,8 +84,11 @@ class UsuarioSrv:
         return ret
 
     def list(self):
+        """
+        Listado de usuarios
+        """
         sql = f'SELECT * FROM {self.view}'
-        
+
         try:
             with MSSQL().cursor() as cursor:
                 cursor.execute(sql)

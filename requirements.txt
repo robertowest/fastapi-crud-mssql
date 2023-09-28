@@ -3,3 +3,10 @@ uvicorn==0.23.2
 
 # SQLServer
 pyodbc==4.0.39
+
+# adicionales (opcionales)
+jinja2==3.1.2
+
+# python-dotenv==1.0.0
+# python-jose[cryptography]==3.3.0
+# python-multipart=0.0.6
