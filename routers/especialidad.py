@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 from db.models.especialidad import EspecialidadModel
-from db.services.especialidad import EspecialidadServices
+from db.services.especialidad import EspecialidadService
 
 app_route = APIRouter(prefix="/especialidad")
 

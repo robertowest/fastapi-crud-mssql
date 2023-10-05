@@ -4,30 +4,28 @@ from pydantic import Field
 from . import AdaptedModel
 
 
-class AgendaBase(AdaptedModel):
-    # campos obligatorios
-    dia: str = Field(max_length=8)
-    hora: int
-    minuto: int
-    consulta: int
-    paciente: str = Field(max_length=12)
-    mod_visita: str = Field(max_length=2)
-    nuevo_pac: bool
-    pendiente_llegar: bool
-
-class Agenda(AgendaBase):
-    id: int
-    # duracion: int
-    # medico: str = Field(max_length=12)
-    # tipo_visita: int 
-    # notas: str = Field(max_length=900)
-    # contador: str = Field(max_length=12)
-    # descuento: str = Field(max_length=2)
-    # FAC: date = Field(default = date.today())
-    # UAC: str = Field(max_length=12)
-    # urgencia: str = Field(max_length=10)
-    # sede: int
-    # Insurance_lid: int
-    # Insurance_name: str = Field(max_length=100)
-    # activity_lid: str = Field(max_length=100)
-    # FEC: date = Field(default = date.today())
+class AgendaModel(AdaptedModel):
+    id : int
+    dia : int = Field(max_length=8)
+    hora : int
+    minuto : int
+    id_paciente : str
+    paciente : str
+    id_medico : str
+    medico : str
+    categoriaProf : int
+    id_sede : int
+    sede : str
+    id_consulta : int
+    consulta : str
+    id_especialidad : str
+    especialidad : str
+    id_empresa_seguro : int
+    empresa_seguro : str
+    id_tipo_visita : int
+    tipo_visita : str
+    id_modo_visita : int
+    modo_visita : str
+    notas : str
+    nuevo_pac : int
+    pendiente_llegar : int

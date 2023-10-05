@@ -1,10 +1,10 @@
 import pyodbc
 
 from db.database import MSSQL
-from db.models.agenda import AgendaBase, Agenda
+from db.models.agenda import AgendaModel
 
 
-class AgendaSrv:
+class AgendaService:
     """
     Modelo CRUD para actualización de tabla
 
@@ -18,15 +18,15 @@ class AgendaSrv:
     
     table = "dbo.agenda"       # nombre de la tabla
     view = "dbo.agenda_view"   # en caso de que use una vista
-    fields = ", ".join(AgendaBase.get_field_names())
+    fields = ", ".join(AgendaModel.get_field_names())
 
     def list(self, paciente: str):
         """
-        Lista agenda de un paciente
+        Lista agenda de un paciente a partir de hoy
         """
-        sql = f"SELECT * " \
+        sql = f"SELECT {self.fields} " \
               f"FROM {self.view} " \
-              f"WHERE paciente = '{paciente}' " \
+              f"WHERE id_paciente = '{paciente}' " \
                "ORDER BY dia, hora, minuto"
 
         try:
